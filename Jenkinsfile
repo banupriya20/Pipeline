@@ -44,8 +44,8 @@ pipeline {
          //  bat 'git add .'
            // bat 'git commit -m "Add generated artifacts"'
            // bat 'git push pipelineC'
-         }
-      }
-   }
+       //  }
+     // }
+  // }
     }
 }
