@@ -6,17 +6,16 @@ pipeline {
             steps {
                build 'PipelineB'
             }
-        }
-    
+        }   
        stage('Generate Doxygen with Warnings File') {
           steps {
              dir('RepoA') {
                bat 'doxygen -g Doxyfile'
-             bat "sed -i \"s|^INPUT *=.*|INPUT                  = C:/ProgramData/Jenkins/.jenkins/workspace/RepoA/src|g\" Doxyfile"
+               bat "sed -i \"s|^INPUT *=.*|INPUT                  = C:/ProgramData/Jenkins/.jenkins/workspace/RepoA/src|g\" Doxyfile"
                bat 'powershell -Command "(Get-Content Doxyfile) -replace \'GENERATE_WARNING *= NO\', \'GENERATE_WARNING = YES\' | Set-Content Doxyfile"'
-             bat 'powershell -Command "(Get-Content Doxyfile) -replace \'WARN_LOGFILE *=.*\', \'WARN_LOGFILE = warnings.log\' | Set-Content Doxyfile"'
-            bat 'powershell -Command "(Get-Content Doxyfile) -replace \'RECURSIVE *= NO\', \'RECURSIVE = YES\' | Set-Content Doxyfile"'
-            bat 'powershell -Command "(Get-Content Doxyfile) -replace \'GENERATE_HTML *= YES\', \'GENERATE_HTML = YES\' | Set-Content Doxyfile"'
+               bat 'powershell -Command "(Get-Content Doxyfile) -replace \'WARN_LOGFILE *=.*\', \'WARN_LOGFILE = warnings.log\' | Set-Content Doxyfile"'
+               bat 'powershell -Command "(Get-Content Doxyfile) -replace \'RECURSIVE *= NO\', \'RECURSIVE = YES\' | Set-Content Doxyfile"'
+               bat 'powershell -Command "(Get-Content Doxyfile) -replace \'GENERATE_HTML *= YES\', \'GENERATE_HTML = YES\' | Set-Content Doxyfile"'
                 }
                dir('RepoA') {
                bat 'doxygen Doxyfile > output.log 2> warnings.log'
@@ -54,4 +53,3 @@ pipeline {
     }
   }
 }
-
