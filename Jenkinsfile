@@ -2,11 +2,11 @@ pipeline {
     agent any
 
     stages {
-        stage('Clone Repository') {
-            steps {
-                bat 'git clone https://github.com/banupriya20/RepoA.git'
-            }
-        }
+     //   stage('Clone Repository') {
+       //     steps {
+         //       bat 'git clone https://github.com/banupriya20/RepoA.git'
+           // }
+        //}
         
  stage('Generate Doxygen Config') {
             steps {
