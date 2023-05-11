@@ -47,5 +47,15 @@ pipeline {
       }
    }
 }
+        stage('Push to Sub-Branch') {
+   steps {
+      dir('RepoA') {
+         git branch: 'pipelineB', credentialsId: 'Githubtoken', url: 'https://github.com/banupriya20/Pipeline.git'
+         bat 'git add .'
+         bat 'git commit -m "Add generated artifacts"'
+         bat 'git push origin pipelineB'
+      }
+   }
+}
     }
 }
