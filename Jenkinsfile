@@ -19,7 +19,7 @@ pipeline {
                 }
                dir('RepoA') {
                bat 'doxygen Doxyfile > output.log 2> warnings.log'
-              //  bat 'copy warnings.log ..\\RepoC\\warnings.log'
+              bat 'copy warnings.log ..\\RepoC\\warnings.log'
             }
            }
         }
