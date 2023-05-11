@@ -7,6 +7,13 @@ pipeline {
           //      build 'PipelineB'
            // }
        // }
+        stage('Clone RepoC') {
+            steps {
+               withCredentials([usernamePassword(credentialsId: 'Githubtoken', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
+                   bat 'git clone https://github.com/banupriya20/RepoC.git'
+                }
+           }
+        }
         stage('Generate Doxygen with Warnings File') {
           steps {
              dir('RepoA') {
@@ -22,15 +29,8 @@ pipeline {
               bat 'copy warnings.log ..\\RepoC\\warnings.log'
             }
            }
-        }
-       // stage('Clone RepoC') {
-           // steps {
-             //  withCredentials([usernamePassword(credentialsId: 'Githubtoken', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
-           //        bat 'git clone https://github.com/banupriya20/RepoC.git'
-         //       }
-       //    }
-     //   }
-               stage('Run Python with Doxygen Warnings') {
+        }       
+        stage('Run Python with Doxygen Warnings') {
           steps {
          dir('RepoC') {
                   bat "python -u doxygen_parser.py warnings.log" 
