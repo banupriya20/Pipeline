@@ -42,15 +42,6 @@ pipeline {
                 }
            }
         }
-        stage('Push artifacts to GitHub') {
-   steps {
-      dir('RepoC') {
-          git branch: 'pipelineC', credentialsId: 'Githubtoken', url: 'https://github.com/banupriya20/Pipeline.git'
-           bat 'git add .'
-            bat 'git commit -m "Add generated artifacts"'
-            bat 'git push origin pipelineC'
-         }
-      }
-   }
+
     }
 }
