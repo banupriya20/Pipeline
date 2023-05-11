@@ -30,17 +30,14 @@ pipeline {
               //  }
           // }
        // }
-        
-       stage('Run Python with Doxygen Warnings') {
+               stage('Run Python with Doxygen Warnings') {
           steps {
          dir('RepoC') {
                   bat "python -u doxygen_parser.py warnings.log" 
                 }
            }
         }
-    }
-}
-stage('Push artifacts to GitHub') {
+        stage('Push artifacts to GitHub') {
    steps {
       dir('RepoC') {
           git branch: 'pipelineC', credentialsId: 'Githubtoken', url: 'https://github.com/banupriya20/Pipeline.git'
@@ -50,4 +47,5 @@ stage('Push artifacts to GitHub') {
          }
       }
    }
+    }
 }
