@@ -2,11 +2,11 @@ pipeline {
     agent any
 
     stages {
-        stage('Extend PipelineB') {
-            steps {
-                build 'PipelineB'
-            }
-        }
+      //  stage('Extend PipelineB') {
+        //    steps {
+          //      build 'PipelineB'
+           // }
+       // }
         stage('Generate Doxygen with Warnings File') {
           steps {
              dir('RepoA') {
