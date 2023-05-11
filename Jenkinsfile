@@ -23,13 +23,13 @@ pipeline {
             }
            }
         }
-        stage('Clone RepoC') {
-            steps {
-               withCredentials([usernamePassword(credentialsId: 'Githubtoken', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
-                   bat 'git clone https://github.com/banupriya20/RepoC.git'
-                }
-           }
-        }
+       // stage('Clone RepoC') {
+           // steps {
+             //  withCredentials([usernamePassword(credentialsId: 'Githubtoken', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
+           //        bat 'git clone https://github.com/banupriya20/RepoC.git'
+         //       }
+       //    }
+     //   }
                stage('Run Python with Doxygen Warnings') {
           steps {
          dir('RepoC') {
