@@ -19,7 +19,7 @@ pipeline {
                 }
                dir('RepoA') {
                bat 'doxygen Doxyfile > output.log 2> warnings.log'
-              bat 'copy warnings.log ..\\RepoC\\warnings.log'
+              //bat 'copy warnings.log ..\\RepoC\\warnings.log'
             }
            }
         }
@@ -37,13 +37,13 @@ pipeline {
                 }
            }
         }
-        stage('Push artifacts to GitHub') {
-   steps {
-      dir('RepoC') {
-          git branch: 'pipelineC', credentialsId: 'Githubtoken', url: 'https://github.com/banupriya20/Pipeline.git'
-           bat 'git add .'
-            bat 'git commit -m "Add generated artifacts"'
-            bat 'git push pipelineC'
+    //    stage('Push artifacts to GitHub') {
+   //steps {
+     // dir('RepoC') {
+       //   git branch: 'pipelineC', credentialsId: 'Githubtoken', url: 'https://github.com/banupriya20/Pipeline.git'
+         //  bat 'git add .'
+           // bat 'git commit -m "Add generated artifacts"'
+           // bat 'git push pipelineC'
          }
       }
    }
