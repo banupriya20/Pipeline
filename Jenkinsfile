@@ -2,11 +2,11 @@ pipeline {
     agent any
 
     stages {
-     //   stage('Clone Repository') {
-       //     steps {
-         //       bat 'git clone https://github.com/banupriya20/RepoA.git'
-           // }
-        //}
+        stage('Clone Repository') {
+            steps {
+                bat 'git clone https://github.com/banupriya20/RepoA.git'
+            }
+        }
         
  stage('Generate Doxygen Config') {
             steps {
@@ -23,8 +23,6 @@ pipeline {
                  bat 'powershell -Command "(Get-Content Doxyfile) -replace \'RECURSIVE *= YES\', \'RECURSIVE = YES\' | Set-Content Doxyfile"'
                    bat 'powershell -Command "(Get-Content Doxyfile) -replace \'GENERATE_HTML *= YES\', \'GENERATE_HTML = YES\' | Set-Content Doxyfile"'
                     bat 'powershell -Command "(Get-Content Doxyfile) -replace \'GENERATE_LATEX *= YES\', \'GENERATE_LATEX = NO\' | Set-Content Doxyfile"'
-                    //bat 'powershell -Command "(Get-Content Doxyfile) -replace \'GENERATE_WARNING *= NO\', \'GENERATE_WARNING = YES\' | Set-Content Doxyfile"'
-                   // bat 'powershell -Command "(Get-Content Doxyfile) -replace \'WARN_LOGFILE *=.*\', \'WARN_LOGFILE = warnings.log\' | Set-Content Doxyfile"'
                     bat 'powershell -Command "(Get-Content Doxyfile) -replace \'RECURSIVE *= NO\', \'RECURSIVE = YES\' | Set-Content Doxyfile"'
                 }
             }
@@ -56,6 +54,6 @@ pipeline {
          bat 'git push origin pipelineB'
       }
    }
-}
-    }
+  }
+ }
 }
