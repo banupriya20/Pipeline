@@ -4,9 +4,8 @@ import re
 
 
 def parse_doxygen_warnings_log(log_file_path):
-    """
-     warnings log file  containing the line number, file name, and warning message.
-    """
+  
+    # warnings log file  containing the line number, file name, and warning message.
     log_entries = []
     try:
         with open(log_file_path, 'r') as log_file:
@@ -22,9 +21,8 @@ def parse_doxygen_warnings_log(log_file_path):
     return log_entries
 
 def write_csv_file(log_entries, output_file_path):
-    """
-    Write log to a CSV file.
-    """
+  
+   # Write log to a CSV file.
     with open(output_file_path, mode='w', newline='') as output_file:
         writer = csv.writer(output_file)
 
