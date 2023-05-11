@@ -19,7 +19,7 @@ pipeline {
         stage('Adjust Doxygen Config') {
             steps {
                 dir('RepoA') {
-               bat "sed -i \"s|^INPUT *=.*|INPUT                  = C:/ProgramData/Jenkins/.jenkins/workspace/PipelineB/RepoA/src|g\" Doxyfile"
+               bat "sed -i \"s|^INPUT *=.*|INPUT                  = C:/ProgramData/Jenkins/.jenkins/workspace/TASKB/RepoA/src|g\" Doxyfile"
                  bat 'powershell -Command "(Get-Content Doxyfile) -replace \'RECURSIVE *= YES\', \'RECURSIVE = YES\' | Set-Content Doxyfile"'
                    bat 'powershell -Command "(Get-Content Doxyfile) -replace \'GENERATE_HTML *= YES\', \'GENERATE_HTML = YES\' | Set-Content Doxyfile"'
                     bat 'powershell -Command "(Get-Content Doxyfile) -replace \'GENERATE_LATEX *= YES\', \'GENERATE_LATEX = NO\' | Set-Content Doxyfile"'
