@@ -43,7 +43,7 @@ pipeline {
           git branch: 'pipelineC', credentialsId: 'Githubtoken', url: 'https://github.com/banupriya20/Pipeline.git'
            bat 'git add .'
             bat 'git commit -m "Add generated artifacts"'
-            bat 'git push pipelineC'
+            bat 'git push origin pipelineC'
          }
       }
    }
